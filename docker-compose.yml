@@ -37,6 +37,6 @@ services:
       # auth creds for you proxy
       # test: `curl v6.ipinfo.io/ip --proxy '127.0.0.1:3129' -U warp_proxy:changeme -v`
       proxy_username: 'warp_proxy'
-      proxy_password: 'changeme2'
+      proxy_password: 'changeme'
     volumes:
       - ./conf:/usr/local/3proxy/conf
