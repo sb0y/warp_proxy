@@ -16,21 +16,8 @@ sed -i "1s/^/${dns_str}/" /usr/local/3proxy/conf/3proxy.cfg
 
 sed -i "s#.*users .*#users ${proxy_username:-'warp_proxy'}:CL:${proxy_password:-'changeme'}#g" /usr/local/3proxy/conf/3proxy.cfg
 
-#tunnel_server_ip4_addr='193.0.203.203'
-#tunnel_ttl=255
-#tunnel_mtu=1480
-#tunnel_client_ip6_addr='2a03:e2c0:47a8::2/64'
-#tunnel_server_ip6_addr='2a03:e2c0:47a8::1/64'
-#tunnel_route_add_cmd_ip6='ip -6 route add ::/0 dev ipv6'
 if [ "${enable_ipv6_tunnel}" == true ];
 then
-	tunnel_server_ip4_addr='95.213.189.133'
-	tunnel_ttl=255
-	tunnel_mtu=1480
-	tunnel_client_ip6_addr='2a06:1301:4725::48a/127'
-	tunnel_server_ip6_addr='2a06:1301:4725::48b/127'
-	tunnel_route_add_cmd_ip6='ip -6 route add 2000::/3 dev ipv6'
-
 	ip -6 route del 0/0
 	#ip -6 route flush 0/0
 
