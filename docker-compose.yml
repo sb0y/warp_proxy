@@ -39,7 +39,7 @@ services:
       proxy_dns: '8.8.8.8, 1.1.1.1'
       # proxy auth creds
       # leavy empty to disable
-      # how test: `curl v6.ipinfo.io/ip  --proxy '127.0.0.1:3129' -U warp_proxy:changeme -v`
+      # how to test: `curl v6.ipinfo.io/ip  --proxy '127.0.0.1:3129' -U warp_proxy:changeme -v`
       proxy_username: 'warp_proxy'
       proxy_password: 'changeme'
     # basically your 3proxy service config is stored here
