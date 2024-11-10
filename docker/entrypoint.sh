@@ -14,7 +14,15 @@ sed -i "1s/^/${dns_str}/" /usr/local/3proxy/conf/3proxy.cfg
 # debug
 #cat /usr/local/3proxy/conf/3proxy.cfg
 
-sed -i "s#.*users .*#users ${proxy_username:-'warp_proxy'}:CL:${proxy_password:-'changeme'}#g" /usr/local/3proxy/conf/3proxy.cfg
+if [ -z "${proxy_username}" ] || [ -z "${proxy_password}" ];
+then
+	# remove auth string if creds empty
+	sed -i -E '/users[^\n]*/d' /usr/local/3proxy/conf/3proxy.cfg
+	sed -i -E '/auth cache strong[^\n]*/d' /usr/local/3proxy/conf/3proxy.cfg
+else
+	sed -i "1s/^/auth cache strong\n/" /usr/local/3proxy/conf/3proxy.cfg
+	sed -i "1s/^/users ${proxy_username}:CL:${proxy_password}\n/" /usr/local/3proxy/conf/3proxy.cfg
+fi
 
 if [ "${enable_ipv6_tunnel}" == true ];
 then
