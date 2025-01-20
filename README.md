@@ -47,5 +47,5 @@ curl https://ifconfig.me -U warp_proxy:changeme --proxy '127.0.0.1:3129'
 ```
 if you have IPv6 in your system you may use
 ```bash
-curl https://ifconfig.me -U warp_proxy:changeme --proxy '[::1]:3129
+curl https://ifconfig.me -U warp_proxy:changeme --proxy '[::1]:3129'
 ```
