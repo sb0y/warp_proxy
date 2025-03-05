@@ -5,12 +5,10 @@ local_ip4_addr=`ip -f inet addr show eth0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/
 dns_str=''
 for i in `echo ${proxy_dns:-'8.8.8.8,1.1.1.1'} | sed "s/,/ /g"`
 do
-    dns_str="${dns_str}nserver ${i}\n"
+	dns_str="${dns_str}nserver ${i}\n"
 done
-# remove all 'nserver' records
-sed -i -E '/nserver[^\n]*/d' /usr/local/3proxy/conf/3proxy.cfg
-# add from docker-compose.yml
-sed -i "1s/^/${dns_str}/" /usr/local/3proxy/conf/3proxy.cfg
+
+echo "${dns_str}" > /usr/local/3proxy/conf/dns.cfg
 # debug
 #cat /usr/local/3proxy/conf/3proxy.cfg
 
